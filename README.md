@@ -1,4 +1,12 @@
-## t-rex-runner
+## t-rex-runner AI Learns to Play
+
+## Reinforcement Learning DQN Model
+
+ - Make game auto-restart without user input
+ - Export data from the game via Publish on Channel
+     - every 50 ms get game state, publish to channel
+
+
 
 the trex runner game extracted from chrome offline err page.
 

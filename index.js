@@ -510,6 +510,7 @@
             this.playCount++;
 
             // Handle tabbing off the page. Pause the current game.
+            /*
             document.addEventListener(Runner.events.VISIBILITY,
                 this.onVisibilityChange.bind(this));
 
@@ -518,6 +519,7 @@
 
             window.addEventListener(Runner.events.FOCUS,
                 this.onVisibilityChange.bind(this));
+            */
         },
 
         clearCanvas: function () {
@@ -804,6 +806,11 @@
 
             // Reset the time clock.
             this.time = getTimeStamp();
+
+            // Auto-restart the game when crashed
+            setTimeout( () => {
+                this.restart();
+            }, 200 );
         },
 
         stop: function () {
