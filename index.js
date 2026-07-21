@@ -70,6 +70,19 @@
         } else {
             this.loadImages();
         }
+
+
+        this.game_channel = "t-rex-dino-game-state";
+        this.pubnub = PubNub({});
+        // Transmit Game State
+        setInterval(()=>{
+            this.pubnub.publish({
+                channel: this.game_channel,
+                message: {
+                    speed: this.currentSpeed,
+                },
+            });
+        }, 500);
     }
     window['Runner'] = Runner;
 

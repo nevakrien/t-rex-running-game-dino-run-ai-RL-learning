@@ -3,8 +3,17 @@
 ## Reinforcement Learning DQN Model
 
  - ✅ Make game auto-restart without user input
+ - ✅ Make auto-jump
  - Export data from the game via Publish on Channel
      - every 50 ms get game state, publish to channel
+
+ - Make state input section for the AI to make play decisions
+ - Python script for AI model, 
+     - MLP model
+     - Reward system
+     - Simulation
+     - Transmit Outputs (game play movements)
+     - 
 
 
 
