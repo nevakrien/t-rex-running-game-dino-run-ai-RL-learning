@@ -251,12 +251,14 @@
             this.outerContainerEl.appendChild(this.containerEl);
 
             // Show notification when the activation key is pressed.
+            /*
             document.addEventListener(Runner.events.KEYDOWN, function (e) {
                 if (Runner.keycodes.JUMP[e.keyCode]) {
                     this.containerEl.classList.add(Runner.classes.SNACKBAR_SHOW);
                     document.querySelector('.icon').classList.add('icon-disabled');
                 }
             }.bind(this));
+            */
         },
 
         /**
@@ -380,6 +382,8 @@
 
             // Draw t-rex
             this.tRex = new Trex(this.canvas, this.spriteDef.TREX);
+
+            setInterval( () => { this.tRex.startJump(this.currentSpeed); }, 200 );
 
             this.outerContainerEl.appendChild(this.containerEl);
 
@@ -681,6 +685,7 @@
 
             if (e.target != this.detailsButton) {
                 if (!this.crashed && (Runner.keycodes.JUMP[e.keyCode] ||
+                    // TODO add AI jump command
                     e.type == Runner.events.TOUCHSTART)) {
                     if (!this.playing) {
                         this.loadSounds();
@@ -2750,7 +2755,6 @@
         }
     };
 })();
-
 
 function onDocumentLoad() {
     new Runner('.interstitial-wrapper');

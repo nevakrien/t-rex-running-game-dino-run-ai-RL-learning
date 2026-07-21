@@ -2,7 +2,7 @@
 
 ## Reinforcement Learning DQN Model
 
- - Make game auto-restart without user input
+ - ✅ Make game auto-restart without user input
  - Export data from the game via Publish on Channel
      - every 50 ms get game state, publish to channel
 
