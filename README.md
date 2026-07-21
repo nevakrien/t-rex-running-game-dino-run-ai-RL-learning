@@ -4,11 +4,13 @@
 
  - ✅ Make game auto-restart without user input
  - ✅ Make auto-jump
+ - Game State Terminal Viewer Bash
  - Export data from the game via Publish on Channel
      - every 50 ms get game state, publish to channel
 
  - Make state input section for the AI to make play decisions
  - Python script for AI model, 
+     - DQN or PPQ algo?????
      - MLP model
      - Reward system
      - Simulation

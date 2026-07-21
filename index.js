@@ -72,9 +72,9 @@
         }
 
 
+        // Transmit Game State
         this.game_channel = "t-rex-dino-game-state";
         this.pubnub = PubNub({});
-        // Transmit Game State
         setInterval(()=>{
             this.pubnub.publish({
                 channel: this.game_channel,
