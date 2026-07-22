@@ -80,6 +80,10 @@
                 channel: this.game_channel,
                 message: {
                     speed: this.currentSpeed,
+                    // time +0.1
+                    // jump +1
+                    // obsticles
+                    // game over -10.
                 },
             });
         }, 500);
