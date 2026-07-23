@@ -81,13 +81,10 @@
         }
 
         setInterval(()=>{
-            let obstacle_x = 1000;
-            let obstacle_y = 1000;
-            const obstacle = this.horizon.obstacles[0];
-            if (obstacle) {
-                obstacle_x = obstacle.xPos;
-                obstacle_y = obstacle.yPos;
-            }
+            let obstacles = [0, 1].map( i => [
+                decimals(this.horizon.obstacles[i]?.xPos || 1000 / 700.0),
+                decimals(this.horizon.obstacles[i]?.yPos || 1000 / 100.0),
+            ] ).slice(0, 2);
             
             if (this.crashed) this.timeStep = 0;
             else              this.timeStep++;
@@ -97,8 +94,7 @@
                 message: {
                     time: this.timeStep,
                     speed: decimals(this.currentSpeed / this.config.MAX_SPEED),
-                    obstacle_x: decimals(obstacle_x / 700.0),
-                    obstacle_y: decimals(obstacle_y / 100.0),
+                    obstacles: obstacles,
                     crashed: this.crashed ? 1.0 : 0.0,
                     jumping: this.tRex.jumping ? 1.0 : 0.0,
                     jump_velocity: decimals(this.tRex.jumpVelocity / 10.0),
