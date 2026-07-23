@@ -96,12 +96,12 @@
                 channel: this.game_channel,
                 message: {
                     time: this.timeStep,
+                    speed: decimals(this.currentSpeed / this.config.MAX_SPEED),
+                    obstacle_x: decimals(obstacle_x / 700.0),
+                    obstacle_y: decimals(obstacle_y / 100.0),
                     crashed: this.crashed ? 1.0 : 0.0,
                     jumping: this.tRex.jumping ? 1.0 : 0.0,
                     jump_velocity: decimals(this.tRex.jumpVelocity / 10.0),
-                    speed: decimals(this.currentSpeed),
-                    obstacle_x: decimals(obstacle_x / 700.0),
-                    obstacle_y: decimals(obstacle_y / 100.0),
                 },
             });
         }, 50);
@@ -153,7 +153,7 @@
         MAX_CLOUDS: 6,
         MAX_OBSTACLE_LENGTH: 3,
         MAX_OBSTACLE_DUPLICATION: 2,
-        MAX_SPEED: 13,
+        MAX_SPEED: 10,
         MIN_JUMP_HEIGHT: 35,
         MOBILE_SPEED_COEFFICIENT: 1.2,
         RESOURCE_TEMPLATE_ID: 'audio-resources',
@@ -418,7 +418,7 @@
             // Draw t-rex
             this.tRex = new Trex(this.canvas, this.spriteDef.TREX);
 
-            setInterval( () => { this.tRex.startJump(this.currentSpeed); }, 150 );
+            setInterval( () => { this.tRex.startJump(this.currentSpeed); }, 230 );
 
             this.outerContainerEl.appendChild(this.containerEl);
 
