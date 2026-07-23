@@ -5,5 +5,6 @@ SUBKEY='demo'
 TIMETOKEN='1000'
 
 while true; do echo
-    curl URI="https://${ORIGIN}/stream/${SUBKEY}/${GAME_CHANNEL}/0/${TIMETOKEN}";
+    URI="https://${ORIGIN}/stream/${SUBKEY}/${GAME_CHANNEL}/0/${TIMETOKEN}";
+    curl $URI
 done

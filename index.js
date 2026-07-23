@@ -41,7 +41,6 @@
         this.runningTime = 0;
         this.msPerFrame = 1000 / FPS;
         this.currentSpeed = this.config.SPEED;
-
         this.obstacles = [];
 
         this.activated = false; // Whether the easter egg has been activated.
@@ -75,18 +74,37 @@
         // Transmit Game State
         this.game_channel = "t-rex-dino-game-state";
         this.pubnub = PubNub({});
+        this.timeStep = 0;
+
+        function decimals(number) {
+            return Math.round(number * 1000) / 1000;
+        }
+
         setInterval(()=>{
+            let obstacle_x = 1000;
+            let obstacle_y = 1000;
+            const obstacle = this.horizon.obstacles[0];
+            if (obstacle) {
+                obstacle_x = obstacle.xPos;
+                obstacle_y = obstacle.yPos;
+            }
+            
+            if (this.crashed) this.timeStep = 0;
+            else              this.timeStep++;
+
             this.pubnub.publish({
                 channel: this.game_channel,
                 message: {
-                    speed: this.currentSpeed,
-                    // time +0.1
-                    // jump +1
-                    // obsticles
-                    // game over -10.
+                    time: this.timeStep,
+                    crashed: this.crashed ? 1.0 : 0.0,
+                    jumping: this.tRex.jumping ? 1.0 : 0.0,
+                    jump_velocity: decimals(this.tRex.jumpVelocity / 10.0),
+                    speed: decimals(this.currentSpeed),
+                    obstacle_x: decimals(obstacle_x / 700.0),
+                    obstacle_y: decimals(obstacle_y / 100.0),
                 },
             });
-        }, 500);
+        }, 50);
     }
     window['Runner'] = Runner;
 
@@ -400,7 +418,7 @@
             // Draw t-rex
             this.tRex = new Trex(this.canvas, this.spriteDef.TREX);
 
-            setInterval( () => { this.tRex.startJump(this.currentSpeed); }, 200 );
+            setInterval( () => { this.tRex.startJump(this.currentSpeed); }, 150 );
 
             this.outerContainerEl.appendChild(this.containerEl);
 

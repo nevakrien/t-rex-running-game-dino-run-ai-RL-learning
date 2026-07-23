@@ -2,6 +2,7 @@
 
 ## Reinforcement Learning DQN Model
 
+ - DQN with Expereince Replay
  - ✅ Make game auto-restart without user input
  - ✅ Make auto-jump
  - Game State Terminal Viewer Bash
